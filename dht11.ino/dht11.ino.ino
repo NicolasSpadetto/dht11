@@ -226,14 +226,12 @@ void setup()
   hBroker.setKeepAlive(com_time);//muda o tempo de conexão
   
   //tenta conexão
-  if (hBroker.connect(idDeCliente, hive_user, hive_senha)) 
+  while (!hBroker.connect(idDeCliente, hive_user, hive_senha))
   {
-    Serial.println("Conexão bem sucedida...");
+    Serial.println("Não foi possível conectar! Reconectando...");
+    delay(1500);
   }
-  else
-  {
-    Serial.println("Não foi possível conectar!!!");
-  }
+  Serial.println("Conexão bem sucedida...");
 
   Udp.begin(p_local);
 
