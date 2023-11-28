@@ -12,13 +12,14 @@
 
 
 //conexão mqtt
-const int hive_port = 1883;
+const int hive_port = 8883;
 const char hive_server[] = "22daa19a0303494ea2ef047e0a071dfc.s2.eu.hivemq.cloud";
 const char hive_user[] = "ardNic";
 const char hive_senha[] = "TrabalhoComDados2";
 const char idDeCliente[] = "DHT11 data";
 const int com_time = 180; //tempo em segundos de conexão para o servidor e cliente
 const char topico[] = "leituras";
+const int fuso = -3;
 
 
 //conexão com relógio
@@ -124,7 +125,7 @@ time_t NTPTempo()
       secs_1900 |= (unsigned long)buffer[41] << 16;
       secs_1900 |= (unsigned long)buffer[42] << 8;
       secs_1900 |= (unsigned long)buffer[43];
-      return secs_1900 - 2208988800UL;
+      return secs_1900 - 2208988800UL + fuso * SECS_PER_HOUR;
     }
   }
   Serial.println("Erro ao tentar pegar o horário");
