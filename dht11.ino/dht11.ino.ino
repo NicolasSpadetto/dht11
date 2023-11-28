@@ -12,7 +12,7 @@
 
 
 //conexão mqtt
-const int hive_port = 8883;
+const int hive_port = 1883;
 const char hive_server[] = "22daa19a0303494ea2ef047e0a071dfc.s2.eu.hivemq.cloud";
 const char hive_user[] = "ardNic";
 const char hive_senha[] = "TrabalhoComDados2";
