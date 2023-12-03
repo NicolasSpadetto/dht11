@@ -22,19 +22,24 @@ def mod_globais(nv_t: str, nv_temp: str, nv_umid: str):
     print(eixo_umid)
     print('\n')
 
-    nv_temp.rstrip("°C")
-    nv_umid.rstrip("%")
+    nv_temp = list(nv_temp)
+    nv_temp.pop()
+    nv_temp.pop()
+    
+
+    nv_umid = list(nv_umid)
+    nv_umid.pop()
 
 
     if eixos_tmn_atual < eixos_max:
         eixo_t.append(nv_t)
-        eixo_temp.append(float(nv_temp))
-        eixo_umid.append(float(nv_umid))
+        eixo_temp.append(float("".join(map(str, nv_temp))))
+        eixo_umid.append(float("".join(map(str, nv_umid))))
         eixos_tmn_atual += 1
     else:
         eixo_t.append(nv_t)
-        eixo_temp.append(float(nv_temp))
-        eixo_umid.append(float(nv_umid))
+        eixo_temp.append(float("".join(map(str, nv_temp))))
+        eixo_umid.append(float("".join(map(str, nv_umid))))
         eixo_t.pop(0)
         eixo_temp.pop(0)
         eixo_umid.pop(0)
